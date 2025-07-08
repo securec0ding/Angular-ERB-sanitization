@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rails Angular XSS</title>
+    <%= csrf_meta_tags %>
+
+    <% if @name %>
+      <script type="text/javascript">
+        window.__name__ = '<%= @name.html_safe %>'
+      </script>
+    <% end %>
+
+    <%= javascript_pack_tag 'hello_name' %>
+    <%= stylesheet_link_tag "https://hunter2labs.s3.amazonaws.com/common.css" %>
+    <%= javascript_include_tag "https://hunter2labs.s3.amazonaws.com/common.js" %>
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>
