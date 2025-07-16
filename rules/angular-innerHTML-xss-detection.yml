@@ -1,0 +1,10 @@
+rules:
+  - id: angular-innerHTML-xss-detection
+    pattern-regex: '\[innerHTML\]="[^"]*"'
+    message: "Potential XSS vulnerability: Using [innerHTML] without sanitization can lead to XSS attacks. Consider using Angular's DomSanitizer."
+    languages: [typescript]
+    severity: WARNING
+    metadata:
+      category: security
+      cwe: "CWE-79"
+      confidence: HIGH 
